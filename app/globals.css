@@ -9,8 +9,11 @@
   --bg: #fefdff;
   --cta: #f5c518;
   --red: #ed2424;
+  --dark-red: #c61e1e;
   --purple: #9a72dd;
+  --dark-purple: #7a5bb1;
   --blue: #0081d7;
+  --dark-blue: #0064a6;
   --green: #55b77c;
   --dark-green: #4ca46f;
   --gray: #e9ebed;
@@ -126,11 +129,13 @@ p {
   max-width: 75vw;
   min-width: 75vw;
   height: 2.5rem;
-  border: 1px solid var(--dark-green);
+  /*   border: 1px solid var(--dark-green);
+ */
   color: var(--bg);
   background: var(--green);
   border-radius: 15px;
-  box-shadow: 0 0 4px var(--dark-green) inset, 0 0px 0px;
+  /*   box-shadow: 0 0 4px var(--dark-green) inset, 0 0px 0px;
+ */
   text-overflow: clip;
 }
 
@@ -142,7 +147,8 @@ p {
   top: 1rem;
   width: 3rem;
   height: 2.3rem;
-  background: var(--dark-green);
+  /*   background: var(--dark-green);
+ */
   border-radius: 15px;
 }
 
@@ -156,7 +162,8 @@ p {
 .banner::after {
   right: 7.4vw;
   left: auto;
-  border-left: 20px solid var(--dark-green);
+  /*   border-left: 20px solid var(--dark-green);
+ */
   border-right: 20px solid transparent;
   transform: scaleX(90deg);
   clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);

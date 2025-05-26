@@ -76,10 +76,62 @@ export const logout = () => {
   return auth.signOut();
 };
 
-//create new chat
-export async function createGroupChat(currentUser, otherUsers, groupName) {
-  console.log("createGroupChat with:", { currentUser, otherUsers });
+// //create new chat
+// export async function createGroupChat(currentUser, otherUsers, groupName) {
+//   console.log("createGroupChat with:", { currentUser, otherUsers });
 
+//   const chatRef = push(ref(database, "chats"));
+//   const chatId = chatRef.key;
+
+//   //create object w/ members
+//   const members = {};
+//   [currentUser, ...otherUsers].forEach((user) => {
+//     members[user.uid] = true;
+//   });
+
+//   //log after building members
+//   console.log("members:", members);
+
+//   //create chat object in {uid}/chats
+//   await set(chatRef, {
+//     name: groupName,
+//     members: members,
+//     createdAt: new Date().toISOString(),
+//     messages: {},
+//   });
+
+//   //update each {uid}/chats/{chatId}
+//   const updates = {};
+
+//   //log after building updates
+//   console.log("updates:", updates);
+
+//   //ref under each {uid}/chats/{chatId}
+//   Object.keys(members).forEach((uid) => {
+//     updates[`users/${uid}/chats/${chatId}`] = {
+//       name: groupName,
+//       createdAt: new Date().toISOString(),
+//     };
+//   });
+
+//   await update(ref(database), updates);
+
+//   return chatId;
+// }
+
+//create new chat
+export async function createGroupChat(
+  currentUser,
+  otherUsers,
+  groupName,
+  groupColour
+) {
+  console.log("createGroupChat with:", {
+    currentUser,
+    otherUsers,
+    groupName,
+    groupColour,
+  });
   const chatRef = push(ref(database, "chats"));
   const chatId = chatRef.key;
 
@@ -95,6 +147,7 @@ export async function createGroupChat(currentUser, otherUsers, groupName) {
   //create chat object in {uid}/chats
   await set(chatRef, {
     name: groupName,
+    groupColour: groupColour, // Add the selected color
     members: members,
     createdAt: new Date().toISOString(),
     messages: {},
@@ -102,7 +155,6 @@ export async function createGroupChat(currentUser, otherUsers, groupName) {
 
   //update each {uid}/chats/{chatId}
   const updates = {};
-
   //log after building updates
   console.log("updates:", updates);
 
@@ -115,7 +167,6 @@ export async function createGroupChat(currentUser, otherUsers, groupName) {
   });
 
   await update(ref(database), updates);
-
   return chatId;
 }
 
