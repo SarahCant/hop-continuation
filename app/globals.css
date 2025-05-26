@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* FONT IMPORT */
+@import url("https://use.typekit.net/xyx5wta.css");
+@import url("href:https://use.typekit.net/xyx5wta.css");
+
+/* --- ROOT --- */
+:root {
+  --bg: #fefdff;
+  --cta: #f5c518;
+  --red: #ed2424;
+  --purple: #9a72dd;
+  --blue: #0081d7;
+  --green: #55b77c;
+  --dark-green: #4ca46f;
+  --gray: #e9ebed;
+  --black: #112418;
+  --active: #ddf0e4;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg);
+}
+
+/* --- FONTS --- */
+p {
+  font-family: "verdana", sans-serif;
+  font-style: normal;
+  color: var(--black);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "oswald", sans-serif;
+  font-style: normal;
+  color: var(--black);
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 1.9rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1.13rem;
+}
+
+p {
+  font-weight: 300;
+  font-size: 0.82rem;
+  line-height: 1rem;
+}
+
+/* --- ERROR MESSAGES --- */
+.error {
+  color: var(--red);
+  font-size: 0.72rem;
+  line-height: 0.9rem;
+  padding-top: 5px;
+}
+
+/* --- INPUT FIELDS --- */
+.input {
+  background-color: var(--gray);
+  border-radius: 20px;
+  padding: 0.55rem;
+  padding-left: 10px;
+  /*  margin-left: -0.3em; */
+}
+
+/* LOGIN AND REG INPUTS */
+.input-logreg {
+  margin-left: -0.3rem;
+}
+.input-logreg:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--cta);
+}
+
+/* --- CTA --- */
+.cta {
+  background-color: var(--cta);
+  padding: 0.5rem 2rem;
+  font-family: "verdana", sans-serif;
+  color: var(--bg);
+  border-radius: 40px;
+  text-shadow: 0 0 0.5px currentColor, 0 0 0.5px currentColor;
+  letter-spacing: 0.03em;
+  width: 50vw;
+}
+
+/* --- ICONS --- */
+/* MENU ICONS */
+.menu-icon {
+  height: 1.75rem;
+  width: auto;
+}
+
+/* USER ICONS */
+.uicon {
+  width: 8.5vw;
+  height: 8.5vw;
+  background-color: color-mix(in oklab, var(--blue) 50%, transparent);
+  color: var(--blue);
+}
+
+/* --- BANNER --- */
+.banner-outer {
+  width: 100vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 4.5rem;
+  margin-top: 1.5rem;
+}
+
+.banner {
+  max-width: 75vw;
+  min-width: 75vw;
+  height: 2.5rem;
+  border: 1px solid var(--dark-green);
+  color: var(--bg);
+  background: var(--green);
+  border-radius: 15px;
+  box-shadow: 0 0 4px var(--dark-green) inset, 0 0px 0px;
+  text-overflow: clip;
+}
+
+.banner::before,
+.banner::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 1rem;
+  width: 3rem;
+  height: 2.3rem;
+  background: var(--dark-green);
+  border-radius: 15px;
+}
+
+/* LEFT END OF BANNER */
+.banner::before {
+  left: 7vw;
+  clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+
+/* RIGHT END OF BANNER */
+.banner::after {
+  right: 7.4vw;
+  left: auto;
+  border-left: 20px solid var(--dark-green);
+  border-right: 20px solid transparent;
+  transform: scaleX(90deg);
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+}
+
+/* -- FORM PAGES -- */
+/* LOG IN, REGISTER, 404 */
+.form-page {
+  padding-top: 8%;
+}
