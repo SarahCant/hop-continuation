@@ -180,13 +180,19 @@ export default function ChatRoom() {
 
                   {/* UserIcon if not current user */}
                   {!isMe && (
-                    <div className="absolute -bottom-1 -left-3.5 -mb-1 -ml-3.5">
+                    <div className="absolute flex -bottom-1 -left-3.5 -mb-1 -ml-3.5">
                       <UserIcon
                         name={m.senderName}
                         className="uicon !w-6 !h-6"
                         color={groupColour}
                       />
                     </div>
+                  )}
+
+                  {!isMe && (
+                    <p className="absolute !text-xs !text-gray-500 -ml-3.5 pt-3 ">
+                      {m.senderName}
+                    </p>
                   )}
                 </div>
               </div>
