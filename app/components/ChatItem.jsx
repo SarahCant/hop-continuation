@@ -12,45 +12,59 @@ export default function ChatItem({ chatId }) {
   const [latestText, setLatestText] = useState("");
   const [timestamp, setTimestamp] = useState(0);
   const [senderName, setSenderName] = useState("");
+  const [groupColour, setGroupColour] = useState("");
 
   useEffect(() => {
     //render nothing if no chatId
     if (!chatId) return;
 
     (async () => {
-      //fetch chat name
-      const nameSnap = await get(child(ref(database), `chats/${chatId}/name`));
-      setName(nameSnap.exists() ? nameSnap.val() : "Ukendt chat");
+      try {
+        //fetch all chat data in parallel
+        const [nameSnap, createdSnap, groupColourSnap, lastMsgSnap] =
+          await Promise.all([
+            get(child(ref(database), `chats/${chatId}/name`)),
+            get(child(ref(database), `chats/${chatId}/createdAt`)),
+            get(child(ref(database), `chats/${chatId}/groupColour`)),
+            get(
+              query(ref(database, `chats/${chatId}/messages`), limitToLast(1))
+            ),
+          ]);
 
-      //creation time
-      const createdSnap = await get(
-        child(ref(database), `chats/${chatId}/createdAt`)
-      );
-      const createdAt = createdSnap.exists() ? createdSnap.val() : 0;
+        //set chat name
+        setName(nameSnap.exists() ? nameSnap.val() : "Ukendt chat");
 
-      //latest message
-      const lastMsgSnap = await get(
-        query(ref(database, `chats/${chatId}/messages`), limitToLast(1))
-      );
-      let lastTxt = "";
-      let lastTs = 0;
-      let lastSender = "";
-      lastMsgSnap.forEach((m) => {
-        const v = m.val();
-        lastTxt = v.text;
-        lastTs = v.timestamp;
-        lastSender = v.sender;
-      });
-
-      setLatestText(lastTxt);
-      setTimestamp(lastTs || createdAt);
-
-      //last message's sender
-      if (lastSender) {
-        const userSnap = await get(
-          child(ref(database), `users/${lastSender}/username`)
+        //set group colour
+        setGroupColour(
+          groupColourSnap.exists() ? groupColourSnap.val() : "var(--green)"
         );
-        setSenderName(userSnap.exists() ? userSnap.val() : lastSender);
+
+        //creation time
+        const createdAt = createdSnap.exists() ? createdSnap.val() : 0;
+
+        //latest message
+        let lastTxt = "";
+        let lastTs = 0;
+        let lastSender = "";
+        lastMsgSnap.forEach((m) => {
+          const v = m.val();
+          lastTxt = v.text;
+          lastTs = v.timestamp;
+          lastSender = v.sender;
+        });
+
+        setLatestText(lastTxt);
+        setTimestamp(lastTs || createdAt);
+
+        //last message's sender
+        if (lastSender) {
+          const userSnap = await get(
+            child(ref(database), `users/${lastSender}/username`)
+          );
+          setSenderName(userSnap.exists() ? userSnap.val() : lastSender);
+        }
+      } catch (error) {
+        console.error("Error fetching chat data:", error);
       }
     })();
   }, [chatId]);
@@ -61,7 +75,7 @@ export default function ChatItem({ chatId }) {
         <section className="flex justify-between p-4">
           <div className="flex items-center space-x-3 flex-1 min-w-0">
             {/* chat's icon */}
-            <UserIcon name={name} />
+            <UserIcon name={name} color={groupColour} />
             <div className="flex flex-col ml-2 flex-1 min-w-0">
               {/* chat name */}
               <h3 className="truncate">{name}</h3>

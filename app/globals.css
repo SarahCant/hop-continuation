@@ -111,7 +111,6 @@ p {
 .uicon {
   width: 8.5vw;
   height: 8.5vw;
-  background-color: color-mix(in oklab, var(--blue) 50%, transparent);
   color: var(--blue);
 }
 
