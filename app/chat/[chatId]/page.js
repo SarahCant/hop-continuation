@@ -131,10 +131,12 @@ export default function ChatRoom() {
           <svg viewBox="0.5 -1 10 11">
             <path
               d="M 5.25 9 L 1.5 3.75 C 1.5 3.75 1.5 3.75 1.5 3.75 L 5.25 -1.5 M 5.25 -1.5 L 3 3.75 L 5.25 9"
-              fill="var(--green)"
+              fill={`${groupColour}`}
             />
           </svg>
-          <p className="!text-[10px] -mt-1 !text-[var(--green)]">Chats</p>
+          <p className="!text-[10px] -mt-1" style={{ color: groupColour }}>
+            Chats
+          </p>
         </Link>
 
         {/* banner w/ dynamic color */}
@@ -182,6 +184,7 @@ export default function ChatRoom() {
                       <UserIcon
                         name={m.senderName}
                         className="uicon !w-6 !h-6"
+                        color={groupColour}
                       />
                     </div>
                   )}
