@@ -38,7 +38,7 @@ export default function StepIndicator({ currentStep, totalSteps }) {
       </div>
 
       {/* Step labels */}
-      <div className="text-xs text-gray-600">
+      <div className="text-xs text-gray-600 pr-[1.5vw]">
         Trin {currentStep} af {totalSteps}
       </div>
     </div>

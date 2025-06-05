@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function SelectedMembersList({ selectedUsers, onRemove }) {
   return (
-    <div className="pt-20">
+    <div className="pt-[20vh]">
       <h2>Din gruppe</h2>
 
       {selectedUsers.length > 0 ? (

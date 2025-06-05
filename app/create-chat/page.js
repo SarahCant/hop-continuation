@@ -136,8 +136,8 @@ export default function CreateChat() {
         {currentStep === 2 && (
           <>
             <p className="mb-8">
-              Vælg et fedt navn til din gruppe og tryk på &quot;Opret&quot; for
-              at fortsætte.
+              Vælg et navn og en farve til din gruppe og tryk på
+              &quot;Opret&quot; for at afslutte.
             </p>
 
             {/* back btn */}
@@ -162,6 +162,7 @@ export default function CreateChat() {
                 <Banner name={groupName || " "} color={selectedColor} />
               </div>
 
+              <h2 className="-mb-7 -mt-3">Vælg farve</h2>
               <ColourSelect
                 selectedColor={selectedColor}
                 onColorChange={setSelectedColor}
