@@ -122,14 +122,12 @@ export default function CreateChat() {
             />
 
             {/* next btn */}
-            {canGoToNextStep && (
-              <CreateChatButton
-                onClick={goToNextStep}
-                disabled={!canGoToNextStep}
-                isLoading={false}
-                text="NÆSTE"
-              />
-            )}
+            <CreateChatButton
+              onClick={goToNextStep}
+              disabled={!canGoToNextStep}
+              isLoading={false}
+              text="NÆSTE"
+            />
           </>
         )}
 
