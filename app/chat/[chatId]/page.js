@@ -178,7 +178,7 @@ export default function ChatRoom() {
                 >
                   {m.text}
 
-                  {/* UserIcon if not current user */}
+                  {/* UserIcon and name if not current user */}
                   {!isMe && (
                     <div className="absolute flex -bottom-1 -left-3.5 -mb-1 -ml-3.5">
                       <UserIcon
@@ -190,7 +190,7 @@ export default function ChatRoom() {
                   )}
 
                   {!isMe && (
-                    <p className="absolute !text-xs !text-gray-500 -ml-3.5 pt-3 ">
+                    <p className="absolute !text-xs !text-gray-500 -ml-3.5 pt-3">
                       {m.senderName}
                     </p>
                   )}
