@@ -8,6 +8,7 @@ const nextConfig = {
     messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId,
   },
+  devIndicators: false,
 };
 
 export default nextConfig;
